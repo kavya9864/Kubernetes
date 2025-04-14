@@ -8,11 +8,13 @@ Minikube
 kubectl
 Docker
 EC2 Ubuntu Instance
+
 ✅ Task 5: Build a Kubernetes Cluster Locally with Minikube
 Objective: Deploy and manage an application inside a Kubernetes cluster.
 Tools Used: Kind (alternative to Minikube), kubectl, Docker, Ubuntu EC2 (Free Tier)
 
 🧱 Step-by-Step Summary:
+
 ✅ 1. Cluster Setup
 Installed Docker and kubectl on Ubuntu EC2.
 
