@@ -17,6 +17,7 @@ Tools Used: Kind (alternative to Minikube), kubectl, Docker, Ubuntu EC2 (Free Ti
 
 ✅ 1. Cluster Setup
 Installed Docker and kubectl on Ubuntu EC2.
+![Screenshot (49)](https://github.com/user-attachments/assets/9d51f67f-2ee3-4abc-9850-49b8ff4568a9)
 
 Since Minikube required more RAM than available, switched to Kind, a lightweight Kubernetes cluster for local testing.
 
@@ -86,6 +87,7 @@ curl localhost:8080
 kubectl scale deployment nginx-deployment --replicas=4
 kubectl describe pod <pod-name>
 kubectl logs <pod-name>
+![Screenshot (48)](https://github.com/user-attachments/assets/ab9ce946-1e8b-4302-afd7-3ff35ea32c8a)
 
 
 
