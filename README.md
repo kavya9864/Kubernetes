@@ -26,4 +26,11 @@ container networking plugins
 4.Expose the Deployment via NodePort kubectl apply -f service.yaml
 5.Verify Resources kubectl get pods kubectl get svc
 6.Scale the App kubectl scale deployment nginx-deployment --replicas=3
-7.
+📸 Screenshots
+Pods running
+Service exposed
+
+
+
+
+🙌 Author GitHub: @kavya9864
