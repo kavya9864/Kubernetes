@@ -8,34 +8,92 @@ Minikube
 kubectl
 Docker
 EC2 Ubuntu Instance
-📦 What’s Inside
+✅ Task 5: Build a Kubernetes Cluster Locally with Minikube
+Objective: Deploy and manage an application inside a Kubernetes cluster.
+Tools Used: Kind (alternative to Minikube), kubectl, Docker, Ubuntu EC2 (Free Tier)
 
-deployment.yaml - Kubernetes Deployment configuration for the NGINX app
-service.yaml - NodePort Service to expose the app
-Sample commands to interact with the cluster
-⚙️ Steps to Run
+🧱 Step-by-Step Summary:
+✅ 1. Cluster Setup
+Installed Docker and kubectl on Ubuntu EC2.
 
-1.Install Prerequisites
-Docker
-Minikube
-kubectl
-cri-dockerd (for none driver)
-container networking plugins
-2.Start Minikube minikube start --driver=none Make sure Docker and required plugins are set up properly.
+Since Minikube required more RAM than available, switched to Kind, a lightweight Kubernetes cluster for local testing.
 
-3.Apply Deployment kubectl apply -f deployment.yaml
+Created a single-node cluster using Kind.
 
-4.Expose the Deployment via NodePort kubectl apply -f service.yaml
+Verified with:
 
-5.Verify Resources kubectl get pods kubectl get svc
+bash
+Copy
+Edit
+kubectl get nodes
 
-6.Scale the App kubectl scale deployment nginx-deployment --replicas=3
+✅ 2. Deployment & Service YAML
 
-📸 Screenshots
+📄 deployment.yaml
+yaml
+Copy
+Edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        
+📄 service.yaml
+yaml
+Copy
+Edit
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: NodePort
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30080
+      
+✅ 3. Commands Executed
+bash
+Copy
+Edit
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl get pods
+kubectl get services
+kubectl port-forward service/nginx-service 8080:80
+curl localhost:8080
+kubectl scale deployment nginx-deployment --replicas=4
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
 
-Pods running
 
-Service exposed
+
+
+🏁 Result:
+✅ Successfully deployed and exposed an NGINX app.
+
+✅ Scaled deployment to 4 pods.
+
+✅ Verified functionality with port-forward and curl.
 
 
 
