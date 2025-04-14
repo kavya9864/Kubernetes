@@ -22,12 +22,19 @@ kubectl
 cri-dockerd (for none driver)
 container networking plugins
 2.Start Minikube minikube start --driver=none Make sure Docker and required plugins are set up properly.
+
 3.Apply Deployment kubectl apply -f deployment.yaml
+
 4.Expose the Deployment via NodePort kubectl apply -f service.yaml
+
 5.Verify Resources kubectl get pods kubectl get svc
+
 6.Scale the App kubectl scale deployment nginx-deployment --replicas=3
+
 📸 Screenshots
+
 Pods running
+
 Service exposed
 
 
